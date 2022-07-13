@@ -1,6 +1,6 @@
 import { types } from 'react-bricks/frontend';
 import {
-  bgColors, borderRadiuss, fontSizes, textColors,
+  bgColors, borderRadiuss, fontSizes, tagNames, textAligns, textColors,
 } from './styles';
 
 export const getBackgroundColorsSideEditProps = ({ name = 'bg', label = 'Background' }: {name?: string, label?: string}):types.ISideEditProp => ({
@@ -10,14 +10,12 @@ export const getBackgroundColorsSideEditProps = ({ name = 'bg', label = 'Backgro
   selectOptions: {
     display: types.OptionsDisplay.Color,
     options: [
+      bgColors.transparent,
       bgColors.white,
-      bgColors.light,
       bgColors.gray,
-      bgColors.lightBlue,
+      bgColors.blue,
       bgColors.green,
       bgColors.orange,
-      bgColors.darkBlue,
-      bgColors.dark,
       bgColors.gradientBlueWhite,
     ],
   },
@@ -40,6 +38,22 @@ export const getFontSizeEditProps = ({ name, label }: {name: string, label: stri
   },
 });
 
+export const getTagNameEditProps = ({ name, label }: {name: string, label: string}):types.ISideEditProp => ({
+  name,
+  label,
+  type: types.SideEditPropType.Select,
+  selectOptions: {
+    display: types.OptionsDisplay.Select,
+    options: [
+      tagNames.p,
+      tagNames.h1,
+      tagNames.h2,
+      tagNames.h3,
+      tagNames.h4,
+    ],
+  },
+});
+
 export const getTextColorsSideEditProps = ({ name = 'textColor', label = 'Text color' }: {name?: string, label?: string}):types.ISideEditProp => ({
   name,
   label,
@@ -53,6 +67,20 @@ export const getTextColorsSideEditProps = ({ name = 'textColor', label = 'Text c
       textColors.gray800,
       textColors.gray900,
       textColors.purple500,
+    ],
+  },
+});
+
+export const getTextAlignsSideEditProps = ({ name = 'textAlign', label = 'Text align' }: {name?: string, label?: string}):types.ISideEditProp => ({
+  name,
+  label,
+  type: types.SideEditPropType.Select,
+  selectOptions: {
+    display: types.OptionsDisplay.Select,
+    options: [
+      textAligns.center,
+      textAligns.left,
+      textAligns.right,
     ],
   },
 });
@@ -88,6 +116,18 @@ export const getRangeSideEditProps = ({
   name,
   label,
   type: types.SideEditPropType.Range,
+  rangeOptions: {
+    min,
+    max,
+  },
+});
+
+export const getNumberSideEditProps = ({
+  name = 'number', label = 'number', min = 0, max = 2000,
+}: {name?: string, label?: string, min?: number, max?:number}):types.ISideEditProp => ({
+  name,
+  label,
+  type: types.SideEditPropType.Number,
   rangeOptions: {
     min,
     max,

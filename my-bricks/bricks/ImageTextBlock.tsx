@@ -35,6 +35,25 @@ interface ImageTextBlockProps {
   btnPaddingY? : number,
 }
 
+const defaultProps = {
+  bg: bgColors.white.value,
+  titleFontSize: fontSizes.lg.value,
+  titleColor: textColors.gray900.value,
+  contentFontSize: fontSizes.sm.value,
+  contentColor: textColors.purple500.value,
+  bgImage: null,
+  wrapperHeight: 500,
+
+  showButton: false,
+  btnBorderRadius: borderRadiuss.md.value,
+  btnText: 'Button',
+  btnBg: bgColors.blue.value,
+  btnFontSize: fontSizes.lg.value,
+  btnFontColor: textColors.gray700.value,
+  btnPaddingX: 20,
+  btnPaddingY: 10,
+};
+
 const ImageTextBlock: types.Brick<ImageTextBlockProps> = ({
   bg, titleFontSize, contentFontSize, titleColor,
   contentColor, bgImage, wrapperHeight, showButton,
@@ -47,16 +66,25 @@ const ImageTextBlock: types.Brick<ImageTextBlockProps> = ({
     style={{ backgroundImage: bgImage && `url('${bgImage.src}')`, height: `${wrapperHeight}px` }}
   >
     <div className="text-center mt-6">
-      <Text
+      <RichText
         propName="title"
         placeholder="title..."
         renderBlock={({ children }) => (
           <h3
-            className={classname('font-bold', titleFontSize, titleColor.className)}
+            className={classname(titleFontSize, titleColor.className)}
           >
             {children}
           </h3>
         )}
+        allowedFeatures={[
+          types.RichTextFeatures.Bold,
+          types.RichTextFeatures.Italic,
+          types.RichTextFeatures.Code,
+          types.RichTextFeatures.Highlight,
+          types.RichTextFeatures.Link,
+          types.RichTextFeatures.UnorderedList,
+          types.RichTextFeatures.Quote,
+        ]}
       />
       <RichText
         propName="content"
@@ -68,20 +96,30 @@ const ImageTextBlock: types.Brick<ImageTextBlockProps> = ({
             {children}
           </p>
         )}
+        allowedFeatures={[
+          types.RichTextFeatures.Bold,
+          types.RichTextFeatures.Italic,
+          types.RichTextFeatures.Code,
+          types.RichTextFeatures.Highlight,
+          types.RichTextFeatures.Link,
+          types.RichTextFeatures.UnorderedList,
+          types.RichTextFeatures.Quote,
+        ]}
       />
       {showButton
         && (
-        <Button
-          borderRadius={btnBorderRadius}
-          bg={btnBg.className}
-          fontSize={btnFontSize}
-          fontColor={btnFontColor.className}
-          paddingX={btnPaddingX}
-          paddingY={btnPaddingY}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          {btnText}
-        </Button>
+          <div className="absolute bottom-8 w-full text-center">
+            <Button
+              borderRadius={btnBorderRadius}
+              bg={btnBg.className}
+              fontSize={btnFontSize}
+              fontColor={btnFontColor.className}
+              paddingX={btnPaddingX}
+              paddingY={btnPaddingY}
+            >
+              {btnText}
+            </Button>
+          </div>
         )}
     </div>
   </div>
@@ -94,6 +132,7 @@ ImageTextBlock.schema = {
   name: blockNames.ImageTextBlock,
   label: 'Image Text Block',
   category: CATEGORY,
+  getDefaultProps: () => ({ ...defaultProps }),
   sideEditProps: [
     {
       groupName: 'Layout Content',
@@ -130,23 +169,6 @@ ImageTextBlock.schema = {
   ],
 };
 
-ImageTextBlock.defaultProps = {
-  bg: bgColors.white.value,
-  titleFontSize: fontSizes.lg.value,
-  titleColor: textColors.gray900.value,
-  contentFontSize: fontSizes.sm.value,
-  contentColor: textColors.gray500.value,
-  bgImage: null,
-  wrapperHeight: 500,
-
-  showButton: false,
-  btnBorderRadius: borderRadiuss.md.value,
-  btnText: 'Button',
-  btnBg: bgColors.blue.value,
-  btnFontSize: fontSizes.lg.value,
-  btnFontColor: bgColors.white.value,
-  btnPaddingX: 20,
-  btnPaddingY: 10,
-};
+ImageTextBlock.defaultProps = defaultProps;
 
 export default ImageTextBlock;

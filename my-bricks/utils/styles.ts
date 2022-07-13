@@ -9,14 +9,11 @@ export type TextColorName =
   | 'purple500'
 
 export type BgColorName =
+  | 'transparent'
   | 'white'
-  | 'light'
   | 'gray'
-  | 'lightBlue'
   | 'orange'
   | 'green'
-  | 'darkBlue'
-  | 'dark'
   | 'blue'
   | 'gradientBlueWhite'
 
@@ -38,6 +35,11 @@ export type BorderRadiusName =
   | '4xl'
   | 'full'
 
+export type TextAlignName =
+  | 'left'
+  | 'right'
+  | 'center'
+
 export type ValueColor = {
   color: string
   className: string
@@ -57,50 +59,36 @@ type TextColors = { [key in TextColorName]: SelectColor }
 type BgColors = { [key in BgColorName]: SelectColor }
 type FontSizes = { [key in FontSizeName]: Select }
 type BorderRadiuss = { [key in BorderRadiusName]: Select }
+type TextAligns = { [key in TextAlignName]: Select }
 
 export const bgColors: BgColors = {
+  transparent: {
+    label: 'Transparent',
+    value: { color: '#ffffff', className: 'bg-transparent' },
+  },
   white: {
     label: 'White',
-    value: { color: '#fff', className: 'bg-white dark:bg-gray-900' },
-  },
-  light: {
-    label: 'Light',
-    value: { color: '#f9fafb', className: 'bg-gray-50 dark:bg-gray-800' },
+    value: { color: '#fff', className: 'bg-white' },
   },
   gray: {
     label: 'Gray',
-    value: { color: '#f3f4f6', className: 'bg-gray-100 dark:bg-gray-800' },
-  },
-  lightBlue: {
-    label: 'Light Blue',
-    value: { color: '#e0f2fe', className: 'bg-sky-100 dark:bg-gray-800' },
+    value: { color: '#f3f4f5', className: 'bg-gray-200' },
   },
   orange: {
     label: 'Orange',
-    value: { color: '#fef3c7', className: 'bg-amber-100 dark:bg-gray-800' },
+    value: { color: '#F58220', className: 'bg-orange' },
   },
   green: {
     label: 'Green',
-    value: { color: '#ecfccb', className: 'bg-lime-100 dark:bg-gray-800' },
-  },
-  darkBlue: {
-    label: 'Dark Blue',
-    value: {
-      color: '#0c4a6e',
-      className: 'bg-sky-900 dark:bg-gray-800 dark',
-    },
-  },
-  dark: {
-    label: 'Dark',
-    value: { color: '#111827', className: 'bg-gray-900 dark:bg-gray-900 dark' },
+    value: { color: '#55c771', className: 'bg-green' },
   },
   blue: {
     label: 'Blue',
-    value: { color: '#3b82f6', className: 'bg-blue-500' },
+    value: { color: '#0276f1', className: 'bg-blue' },
   },
   gradientBlueWhite: {
     label: 'Gradient blue to white',
-    value: { color: '#6366f1', className: 'bg-gradient-to-r from-cyan-500 to-blue-500' },
+    value: { color: '#6366f1', className: 'bg-gradient-to-r from-cyan-500 to-blue' },
   },
 };
 
@@ -190,5 +178,73 @@ export const borderRadiuss: BorderRadiuss = {
   full: {
     label: 'Full rounded',
     value: 'rounded-full',
+  },
+};
+
+export const mappingGridTailwind = {
+  1: 'grid-cols-1',
+  2: 'grid-cols-2',
+  3: 'grid-cols-3',
+  4: 'grid-cols-4',
+  5: 'grid-cols-5',
+  6: 'grid-cols-6',
+  7: 'grid-cols-7',
+  8: 'grid-cols-8',
+  9: 'grid-cols-9',
+  10: 'grid-cols-10',
+  11: 'grid-cols-11',
+  12: 'grid-cols-12',
+};
+
+export const mappingGridMdTailwind = {
+  1: 'md:grid-cols-1',
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-3',
+  4: 'md:grid-cols-4',
+  5: 'md:grid-cols-5',
+  6: 'md:grid-cols-6',
+  7: 'md:grid-cols-7',
+  8: 'md:grid-cols-8',
+  9: 'md:grid-cols-9',
+  10: 'md:grid-cols-10',
+  11: 'md:grid-cols-11',
+  12: 'md:grid-cols-12',
+};
+
+export const textAligns: TextAligns = {
+  left: {
+    label: 'Text left',
+    value: 'text-left',
+  },
+  right: {
+    label: 'Text right',
+    value: 'text-right',
+  },
+  center: {
+    label: 'Text center',
+    value: 'text-center',
+  },
+};
+
+export const tagNames = {
+  p: {
+    label: 'p tag',
+    value: 'p',
+  },
+  h1: {
+    label: 'h1 tag',
+    value: 'h1',
+  },
+  h2: {
+    label: 'h2 tag',
+    value: 'h2',
+  },
+  h3: {
+    label: 'h3 tag',
+    value: 'h3',
+  },
+  h4: {
+    label: 'h4 tag',
+    value: 'h4',
   },
 };
