@@ -6,12 +6,12 @@ const Header = () => (
     <div className="w-24">
       <HambergerMenu />
     </div>
-    <div className="flex justify-center items-center">
+    <div className="absolute left-1/2 -translate-x-1/2">
       <Image src="/images/logo.png" alt="logo" width={105} height={65} />
     </div>
-    <div className="w-24 flex justify-end">
+    {/* <div className="w-24 flex justify-end">
       <Image src="/images/non-avatar.png" alt="logo" width={40} height={40} />
-    </div>
+    </div> */}
   </div>
 );
 

@@ -25,6 +25,19 @@ module.exports = {
           900: '#23262f',
         },
       },
+      keyframes: {
+        translateHorizol: {
+          from: {
+            transform: 'translateX(-100%)',
+          },
+          to: {
+            transform: 'translateX(100%)',
+          },
+        },
+      },
+      animation: {
+        translateHorizol: 'translateHorizol 15s infinite',
+      },
     },
   },
   plugins: [],

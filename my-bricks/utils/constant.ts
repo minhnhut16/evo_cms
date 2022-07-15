@@ -1,5 +1,6 @@
 export enum blockNames {
   ImageTextBlock = 'image-text-block',
+  Slick = 'Slick',
   Spacer = 'spacer',
   ImageList = 'image-list',
   ImageItem = 'image-item',

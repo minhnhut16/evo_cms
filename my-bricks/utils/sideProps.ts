@@ -111,14 +111,15 @@ export const getImageSideEditProps = ({ name = 'image', label = 'Image' }: {name
 });
 
 export const getRangeSideEditProps = ({
-  name = 'range', label = 'Range', min = 0, max = 2000,
-}: {name?: string, label?: string, min?: number, max?:number}):types.ISideEditProp => ({
+  name = 'range', label = 'Range', min = 0, max = 2000, step = 1,
+}: {name?: string, label?: string, min?: number, max?:number, step?:number}):types.ISideEditProp => ({
   name,
   label,
   type: types.SideEditPropType.Range,
   rangeOptions: {
     min,
     max,
+    step,
   },
 });
 

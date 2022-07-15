@@ -17,6 +17,8 @@ interface Props {
   bg?: ValueColor,
   paddingX?: number,
   paddingY?: number,
+  imgWidth?: string,
+  imgHeight?: string
 }
 
 const defaultProps = {
@@ -27,14 +29,23 @@ const defaultProps = {
   bg: bgColors.white.value,
   paddingX: 0,
   paddingY: 0,
+  imgWidth: '100%',
+  imgHeight: 'auto',
 };
 
 const ImageItem:types.Brick<Props> = ({
-  titleFontSize, titleColor, contentFontSize, contentColor, bg, paddingX, paddingY,
+  titleFontSize, titleColor, contentFontSize, contentColor, bg, paddingX, paddingY, imgWidth, imgHeight,
 }:Props) => (
   <Spacing px={`${paddingX}px`} py={`${paddingY}px`}>
     <div className={classNames(bg.className)}>
-      <Image propName="image" alt="upload image" />
+      <Image
+        propName="image"
+        alt="upload image"
+        imageStyle={{
+          width: imgWidth,
+          height: imgHeight,
+        }}
+      />
       <div className={classNames('font-bold', titleFontSize, titleColor.className)}>
         <Text
           propName="title"

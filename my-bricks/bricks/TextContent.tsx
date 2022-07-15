@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable no-undef */
 import React from 'react';
 import {
@@ -75,6 +76,6 @@ Text.schema = {
   ],
 };
 
-Text.defaultProps = defaultProps;
+// Text.defaultProps = defaultProps;
 
 export default Text;

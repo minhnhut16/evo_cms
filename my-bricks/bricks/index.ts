@@ -4,6 +4,7 @@ import Spacer from './Spacer';
 import ImageList from './ImageList';
 import ItemImage from './ImageList/Item';
 import TextContent from './TextContent';
+import Slick from './Slick';
 
 const bricks: types.Brick<any>[] = [
   ImageTextBlock,
@@ -11,6 +12,7 @@ const bricks: types.Brick<any>[] = [
   ImageList,
   ItemImage,
   TextContent,
+  Slick,
   // Example custom brick
   // Put here your other bricks...
 ];

@@ -49,29 +49,26 @@ const ImageList:types.Brick<Props> = ({
   bg, col, paddingX, paddingY, colMobile, itemTitleFontSize,
   itemContentFontSize, itemTitleColor, itemContentColor,
   itemBg, itemPaddingX, itemPaddingY,
-}: Props) => {
-  console.log(itemTitleFontSize);
-  return (
-    <Spacing px={`${paddingX}px`} py={`${paddingY}px`}>
-      <div className={classname(bg.className, 'rounded-xl m-2')}>
-        <Repeater
-          propName={imageItemName}
-          renderWrapper={(items) => <div className={`grid ${mappingGridTailwind[colMobile]} ${mappingGridMdTailwind[col]} gap-2`}>{items}</div>}
-          itemProps={{
-            titleFontSize: itemTitleFontSize,
-            contentFontSize: itemContentFontSize,
-            titleColor: itemTitleColor,
-            contentColor: itemContentColor,
-            bg: itemBg,
-            paddingX: itemPaddingX,
-            paddingY: itemPaddingY,
-          }}
-        />
-      </div>
-    </Spacing>
+}: Props) => (
+  <Spacing px={`${paddingX}px`} py={`${paddingY}px`}>
+    <div className={classname(bg.className, 'rounded-xl m-2')}>
+      <Repeater
+        propName={imageItemName}
+        renderWrapper={(items) => <div className={`grid ${mappingGridTailwind[colMobile]} ${mappingGridMdTailwind[col]} gap-2`}>{items}</div>}
+        itemProps={{
+          titleFontSize: itemTitleFontSize,
+          contentFontSize: itemContentFontSize,
+          titleColor: itemTitleColor,
+          contentColor: itemContentColor,
+          bg: itemBg,
+          paddingX: itemPaddingX,
+          paddingY: itemPaddingY,
+        }}
+      />
+    </div>
+  </Spacing>
 
-  );
-};
+);
 
 ImageList.schema = {
   name: blockNames.ImageList,

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Text, RichText, types,
+  RichText, types,
 } from 'react-bricks/frontend';
 import {
   bgColors, borderRadiuss, fontSizes, textColors, ValueColor,
@@ -16,6 +16,7 @@ import {
 } from 'my-bricks/utils/sideProps';
 import classname from 'utils/classname';
 import Button from 'my-bricks/components/Button';
+import LinkButton from 'my-bricks/components/LinkButton';
 
 interface ImageTextBlockProps {
   bg?: ValueColor
@@ -33,6 +34,7 @@ interface ImageTextBlockProps {
   btnFontColor?: ValueColor,
   btnPaddingX? : number,
   btnPaddingY? : number,
+  href? :string
 }
 
 const defaultProps = {
@@ -52,13 +54,14 @@ const defaultProps = {
   btnFontColor: textColors.gray700.value,
   btnPaddingX: 20,
   btnPaddingY: 10,
+  href: '',
 };
 
 const ImageTextBlock: types.Brick<ImageTextBlockProps> = ({
   bg, titleFontSize, contentFontSize, titleColor,
   contentColor, bgImage, wrapperHeight, showButton,
   btnText, btnBorderRadius,
-  btnBg, btnFontSize, btnFontColor, btnPaddingX, btnPaddingY,
+  btnBg, btnFontSize, btnFontColor, btnPaddingX, btnPaddingY, href,
 }: ImageTextBlockProps) => (
 
   <div
@@ -109,16 +112,35 @@ const ImageTextBlock: types.Brick<ImageTextBlockProps> = ({
       {showButton
         && (
           <div className="absolute bottom-8 w-full text-center">
-            <Button
-              borderRadius={btnBorderRadius}
-              bg={btnBg.className}
-              fontSize={btnFontSize}
-              fontColor={btnFontColor.className}
-              paddingX={btnPaddingX}
-              paddingY={btnPaddingY}
-            >
-              {btnText}
-            </Button>
+            {
+              href
+                ? (
+                  <LinkButton
+                    target="_blank"
+                    borderRadius={btnBorderRadius}
+                    bg={btnBg.className}
+                    fontSize={btnFontSize}
+                    fontColor={btnFontColor.className}
+                    paddingX={btnPaddingX}
+                    paddingY={btnPaddingY}
+                    href={href}
+                  >
+                    {btnText}
+                  </LinkButton>
+                )
+                : (
+                  <Button
+                    borderRadius={btnBorderRadius}
+                    bg={btnBg.className}
+                    fontSize={btnFontSize}
+                    fontColor={btnFontColor.className}
+                    paddingX={btnPaddingX}
+                    paddingY={btnPaddingY}
+                  >
+                    {btnText}
+                  </Button>
+                )
+            }
           </div>
         )}
     </div>
@@ -154,6 +176,7 @@ ImageTextBlock.schema = {
       defaultOpen: true,
       props: [
         getTextSideEditProps({ name: 'btnText', label: 'Button Text' }),
+        getTextSideEditProps({ name: 'href', label: 'Button link' }),
         getBorderRadiusSideEditProps({ name: 'btnBorderRadius', label: 'Button border radius' }),
         getBackgroundColorsSideEditProps({ name: 'btnBg', label: 'Button background' }),
         getFontSizeEditProps({ name: 'btnFontSize', label: 'Button Font Size' }),
